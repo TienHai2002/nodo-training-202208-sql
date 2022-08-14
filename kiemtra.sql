@@ -175,3 +175,10 @@ from HAINT_BANDOC group by (to_char(sysdate,'yyyy')-to_char(ngaySinh_bandoc,'yyy
 
 --     9.	Hiển thị danh sách bạn đọc và số lần mượn sách tính từ đầu năm 2022 sắp xếp theo tên bạn đọc tăng dần:
 -- Mã Bạn Đọc, Tên Bạn Đọc, Số Lần Mượn
+select * from HAINT_MUONSACH;
+select ma_bandoc,ten_bandoc,count(soLuong) as soLanMuon
+from HAINT_BANDOC bandoc
+         join HAINT_MUONSACH muonsach on bandoc.id = muonsach.id_bandoc
+where to_char(ngaygiomuon,'yyyy')>=2002
+group by ma_bandoc,ten_bandoc
+order by ten_bandoc asc;
