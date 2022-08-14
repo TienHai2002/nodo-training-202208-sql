@@ -182,3 +182,7 @@ from HAINT_BANDOC bandoc
 where to_char(ngaygiomuon,'yyyy')>=2002
 group by ma_bandoc,ten_bandoc
 order by ten_bandoc asc;
+-- 14.	Hiển thị toàn bộ bạn đọc và sách mà bạn đọc đấy mượn, sẽ có bạn chưa mượn vẫn cần hiển thị và tên sách để là null.
+-- Mã bạn đọc, tên ban đọc, tên sách
+select ma_bandoc,ten_bandoc,ten_sach
+    from HAINT_MUONSACH ms inner join HAINT_BANDOC bd on ms.id_bandoc = bd.id join HAINT_SACH sach on ms.id_sach =  sach.id
