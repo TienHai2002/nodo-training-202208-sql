@@ -17,4 +17,14 @@ public class TryCatchEx {
         number = toNumber("as");
         System.out.println("number = " +number);
     }
+    public static class SaiSoException extends Exception{
+       private String so;
+       public SaiSoException(String value){
+           this.so = value;
+       }
+       public String getMessage(){
+           return "gia tri \'" + so + "\' khong la so";
+       }
+    }
+
 }
