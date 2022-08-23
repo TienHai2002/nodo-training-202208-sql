@@ -2,27 +2,23 @@ import java.io.File;
 import java.sql.*;
 
 public class JdbcFirstEx {
-    public static void main(String[] args) {
-        Connection connection = null;
-        Statement statement = null;
-        String dbUrl = "jdbc:oracle:thin:@27.118.22.14:1521:orcl";
-        String username = "SCOTT";
-        String password = "SCOTT";
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            connection = DriverManager.getConnection(dbUrl,username,password);
-            System.out.println("create database successfull");
-            statement = connection.createStatement();
-            String sql = "create table haint_student(\n" +
-                    "    id number(4) primary key,\n" +
-                    "    genereted int unique ,\n" +
-                    "    name varchar2(100),\n" +
-                    "    age int default (20)\n" +
-                    ")";
-            System.out.println(statement.executeUpdate(sql));
+    public static void main(String[] args) throws Exception{
+        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+        System.out.println("Driver Loading...");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@27.118.22.14:1521:orcl","SCOTT","SCOTT");
+        System.out.println("Connect Successful!");
 
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
-        }
+        Statement statement = con.createStatement();
+
+        String sql = "CREATE TABLE HAINT_STUDENT (\n" +
+                "  ID number  NOT NULL PRIMARY KEY,\n" +
+                "  NAME varchar2(50),\n" +
+                "  AGE number \n" +
+                ")";
+
+        statement.execute(sql);
+
+        con.close();
+        System.out.println("Created!");
     }
 }
