@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <!--    <bean id="helloJavaClazz" class="com.example.nodotraining.Unit1.HelloClazz" scope="prototype"-->
+    <!--          destroy-method="release" init-method="initMessage">-->
+    <!--        <constructor-arg type="int" value="5"/>-->
+    <!--        <property name="message" value="Welecome to java clazz">-->
+    <!--        </property>-->
+
+    <!--    </bean>-->
+    <!--    <bean id="helloJavaClazz" class="com.example.nodotraining.Unit1.HelloClazz">-->
+    <!--        <property name="message" value="Hello Bean Inheritance"></property>-->
+    <!--    </bean>-->
+    <!--    <bean id="helloWorld" class="com.example.nodotraining.Unit1.HelloWorld">-->
+    <!--        <property name="clazz">-->
+    <!--            <bean id="helloJavaClazz" class="com.example.nodotraining.Unit1.HelloClazz">-->
+    <!--                <property name="message" value="Hello Class Intance is inner Bean"></property>-->
+    <!--            </bean>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!--	<bean id="helloWorld" class="com.example.nodotraining.Unit1.HelloWorld" parent="helloJavaClazz">-->
+
+    <!--		<constructor-arg index="0" value="Thuan"/>-->
+
+    <!--	</bean>-->
+
+    <!--    <bean id="helloJavaClazz2" class="com.example.nodotraining.Unit1.HelloClazz" scope="prototype"-->
+    <!--          destroy-method="release" init-method="initMessage">-->
+    <!--        <constructor-arg ref="helloJavaClazz"></constructor-arg>-->
+    <!--        <property name="message" value="Hello Sub Bean">-->
+
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!--    <bean id="sampleTemplate" abstract="true">-->
+    <!--        <property name="message" value="Template say Hello"></property>-->
+    <!--    </bean>-->
+    <!--    <bean id="helloWorld" class="com.example.nodotraining.Unit1.HelloWorld" parent="sampleTemplate">-->
+    <!--        <constructor-arg index="0" value="Thuan"/>-->
+    <!--        <constructor-arg index="1" ref="helloJavaClazz"/>-->
+    <!--    </bean>-->
+<!--    <bean id="jee01" class="com.example.nodotraining.Unit1.JavaClazz">-->
+<!--        <property name="students">-->
+<!--            <map>-->
+<!--                <entry key="Nguyen Tien Hai" value="23"></entry>-->
+<!--                <entry key="Nguyen Danh Vinh" value="24"></entry>-->
+<!--                <entry key="Doan Thanh Tu" value="25"></entry>-->
+<!--                <entry key="Viet Tien Vuong" value="26"></entry>-->
+<!--                <entry key="Nguyen Tien Hai1" value="27"></entry>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="helloJavaClazz" class="com.example.nodotraining.Unit1.HelloClazz">-->
+<!--        <property name="clazzes">-->
+<!--            <list>-->
+<!--                <ref bean="jee01"></ref>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="helloWorld" class="com.example.nodotraining.Unit1.HelloWorld" autowire="byName">-->
+<!--        <property name="clazz">-->
+<!--            <bean id="clazz" class="com.example.nodotraining.Unit1.HelloClazz">-->
+<!--                <property name="message" value="Hello Class Instance is Inner Bean">-->
+
+<!--                </property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--        <property name="message" value="Hello Anocation based config"/>-->
+<!--    </bean>-->
+<!--    <bean id="helloWorld" class="com.example.nodotraining.Unit1.HelloWorld" >-->
+<!--        <property name="clazz">-->
+<!--            <bean id="clazz" class="com.example.nodotraining.Unit1.HelloClazz">-->
+<!--                <property name="message" value="Hello Class Instance is Inner Bean">-->
+
+<!--                </property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--        <property name="message" value="Hello Anocation based config"/>-->
+<!--    </bean>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+        <property name="url" value="jdbc:oracle:thin:@27.118.22.14:1521:orcl;create = true"></property>
+        <property name="username" value="SCOTT"></property>
+        <property name="password" value="SCOTT"></property>
+    </bean>
+    <bean id="studentJDBCDAO" class="com.example.nodotraining.Unit2.StudentJDBCDAO" init-method="createTableIfNotExist">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+</beans>
