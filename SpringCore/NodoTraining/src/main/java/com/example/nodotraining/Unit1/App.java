@@ -17,7 +17,7 @@ public class App {
 
         JavaClazz clazz = (JavaClazz) context.getBean("jee01");
         System.out.println("map implements is " + clazz.getStudents().getClass());
-        System.out.println("there are " + clazz.getStudents().size()+ "in the class");
+        System.out.println("there are " + clazz.getStudents().size()+ "i    n the class");
         System.out.println("total classes is " + obj.getClazzes().size());
     }
 }
