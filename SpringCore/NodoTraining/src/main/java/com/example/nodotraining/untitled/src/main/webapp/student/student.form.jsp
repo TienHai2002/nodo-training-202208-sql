@@ -1,13 +1,11 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"  %>
 <html>
-<head>
-	<title>Unit3</title>
-</head>
+<head> <title>Add New Student</title> </head>
 <body>
-<h2>Add student</h2>
-<form:form method="POST" action="save">
+<h2>Please Input Student Information</h2>
+<form:form method="POST" action="save" >
+	<form:hidden path="id"/>
 	<table>
 		<tr>
 			<td>Name: </td>
@@ -25,6 +23,5 @@
 		</tr>
 	</table>
 </form:form>
-</body> 
+</body>
 </html>
-
