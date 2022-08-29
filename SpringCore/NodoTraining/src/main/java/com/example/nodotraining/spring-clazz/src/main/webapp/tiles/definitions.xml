@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="template" template="/jsp/layout.jsp">
+        <put-attribute name="body" value=""/>
+    </definition>
+    <!--        <definition name="index" extends="template">-->
+    <!--            <put-attribute name="body" value="index.jsp"/>-->
+    <!--        </definition>-->
+    <!--        <definition name="login" extends="template">-->
+    <!--            <put-attribute name="body" value="security/login.jsp"/>-->
+    <!--        </definition>-->
+</tiles-definitions>
