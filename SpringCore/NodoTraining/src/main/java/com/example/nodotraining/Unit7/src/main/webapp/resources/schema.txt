@@ -1,0 +1,2 @@
+create table hngroup(id  bigint primary key generated always as identity (start with 1, increment by 1),  name varchar(100));
+create table hnuser(username VARCHAR(100) primary key,  password varchar(100), email varchar(100), age Integer, groupId bigint, CONSTRAINT CONTENT_FK FOREIGN KEY (groupId) REFERENCES hngroup(id));
