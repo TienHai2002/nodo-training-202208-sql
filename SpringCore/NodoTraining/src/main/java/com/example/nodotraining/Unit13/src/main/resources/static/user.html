@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/sockjs-0.3.4.min.js"></script>
+    <script src="/js/stomp.js"></script>
+    <script type="text/javascript">
+        var stompClient = null;
+        function save(){
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var age = document.getElementById('age').value;
+            var password = document.getElementById('password').value;
+            var groupId = document.getElementById('groupId').value;
+            console.log("Sending.."+username);
+            stompClient.send("/app/user",{},JSON.stringify({
+                'username':username,
+                'email':email,
+                'age': age,
+                'password': password,
+                'groupId': groupId
+            }));
+        }
+        function showMessage(text){
+            var response = document.getElementById('response');
+            var p = document.createElement('p');
+            p.appendChild(document.createTextNode(text));
+            response.appendChild(p);
+        }
+        function connect(){
+            var socket = new SockJS('/user');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({},function (frame){
+                console.log('Connected '+frame);
+                stompClient.subscribe('/topic/chat',function (message){
+                    var text = JSON.parse(message.body).content;
+                    showMessage(text);
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="connect()">
+<h1>Add User</h1>
+<form method="post" action="javascript:save()">
+    <p>Tài khoản: <input type="text" id="username" name="username"/></p>
+    <p>Mật khẩu: <input type="password" id="password" name="password"/></p>
+    <p>Email: <input type="text" id="email" name="email"/></p>
+    <p>Tuổi: <input type="text" id="age" name="age"/></p>
+    <p>Nhóm (ID): <input type="text" id="groupId" name="groupId"/></p>
+    <p class="submit">
+        <input type="submit" name="save" value="Lưu">
+    </p>
+    <p id="response"></p>
+</form>
+</body>
+</html>
